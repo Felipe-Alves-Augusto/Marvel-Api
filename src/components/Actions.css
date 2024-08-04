@@ -1,0 +1,51 @@
+.filters {
+    margin-top: 60px;
+
+}
+
+.filters .wrapper-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filters p {
+    color: #b9b9b9;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order p,
+.favorite p {
+    font-size: 15px;
+    color: #ff1510;
+}
+
+.filters .toggle-left,
+.filters .toggle-right {
+    cursor: pointer;
+}
+
+.filters .toggle img {
+    width: 70px;
+}
+
+.filters .actions,
+.filters .favorite {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+@media screen and (max-width: 768px) {
+
+
+    .wrapper-filters {
+        flex-direction: column;
+        gap: 30px;
+    }
+}

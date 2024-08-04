@@ -1,0 +1,51 @@
+text {
+    font-weight: 600;
+}
+
+.header-home {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header-home .logo img {
+    width: 327px;
+}
+
+
+.header-home .description-header {
+    text-align: center;
+}
+
+.header-home .description-header h1 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .header-home .logo img {
+        width: 200px;
+    }
+
+    .header-home .description-header h1 {
+        font-size: 25px;
+    }
+
+    .header-home,
+    .search,
+    .filters {
+        padding: 0px 3%;
+        width: 100%;
+    }
+
+    .header-home .bar-search input {
+        width: 100%;
+    }
+
+
+
+
+}

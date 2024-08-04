@@ -1,0 +1,94 @@
+.hero {
+    margin-top: 60px;
+}
+
+
+
+.hero .description-hero .flex {
+    justify-content: space-between;
+
+}
+
+.hero h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.hero .btn-favorite img {
+    width: 20px;
+}
+
+.hero .description-hero {
+    width: 40%;
+}
+
+.hero .description-hero .text-hero {
+    margin-top: 25px;
+    
+}
+
+.hero .description-hero .text-hero p {
+    font-size: 15px;
+    line-height: 29px;
+}
+
+.hero .description-hero .comics .flex {
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.hero .description-hero .comics .amount-comics {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+
+.hero .flex {
+    justify-content: space-between;
+    gap: 120px;
+
+}
+
+.hero .img-big-hero  {
+    width: 60%;
+}
+
+
+.hero .img-big-hero img {
+    width: 100%;
+}
+
+.hero .rating-hero {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero .last-one-comics {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .hero .flex {
+        gap: 0;
+        flex-direction: column-reverse;
+    }
+
+    .hero .description-hero .flex {
+        flex-direction: row;
+    }
+
+    .hero .description-hero {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+}
+
