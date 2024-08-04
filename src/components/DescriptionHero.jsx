@@ -14,12 +14,10 @@ import { hydrateRoot } from "react-dom/client";
 export default () => {
 
     const { idCharacter } = useParams();
-    const [character, setCharacter] = useState([]);
+    const [character, setCharacter] = useState(null);
     const [lastComic, setLastComic] = useState([]);
     const [isCharacterFavorite, setIsCharacterFavorite] = useState(false);
-
-
-    console.log(isCharacterFavorite)
+    
 
     useEffect(() => {
 
@@ -39,15 +37,11 @@ export default () => {
         }
 
         const getData = async () => {
-
-            try {
-                const characterData = await getOneCharacter(idCharacter);
-                console.log('um heroi', characterData);
-                setCharacter(characterData);
-
-            } catch (error) {
-                console.log(error);
-            }
+            const characterData = localStorage.getItem(`character_${idCharacter}`);
+            if (characterData) {
+                setCharacter(JSON.parse(characterData)); // Armazena o objeto diretamente
+              }
+            
 
 
         }
@@ -66,7 +60,7 @@ export default () => {
         getLastComic();
 
 
-    }, [])
+    }, [idCharacter]);
 
 
 
@@ -78,8 +72,8 @@ export default () => {
                     <article className="description-hero">
                         <Flex>
                             <h1>
-                                {character[0] &&
-                                    character[0].name
+                                {character != null &&
+                                    character.name
                                 }
 
                             </h1>
@@ -97,15 +91,15 @@ export default () => {
 
                         <div className="text-hero">
 
-                            {character[0] &&
-                                <p>{character[0].description}</p>
+                            {character != null &&
+                                <p>{character.description}</p>
                             }
 
                         </div>
 
                         <div className="comics">
                             <Flex>
-                                {character[0] &&
+                                {character != null &&
                                     <ComicsHero
                                         title="Quadrinhos"
                                         icon={<svg width="28px" height="31px" viewBox="0 0 28 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -118,12 +112,12 @@ export default () => {
                                                 </g>
                                             </g>
                                         </svg>}
-                                        number={character[0].comics.available}
+                                        number={character.comics.available}
                                     ></ComicsHero>
                                 }
 
 
-                                {character[0] &&
+                                {character != null &&
                                     <ComicsHero
                                         title="Filmes"
                                         icon={<svg width="30px" height="31px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -134,7 +128,7 @@ export default () => {
                                                 </g>
                                             </g>
                                         </svg>}
-                                        number={character[0].series.available}
+                                        number={character.series.available}
                                     ></ComicsHero>
                                 }
 
@@ -153,8 +147,8 @@ export default () => {
                     </article>
 
                     <div className="img-big-hero">
-                        {character[0] &&
-                            <img src={`${character[0].thumbnail.path}.${character[0].thumbnail.extension}`} />
+                        {character != null &&
+                            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
                         }
 
                     </div>

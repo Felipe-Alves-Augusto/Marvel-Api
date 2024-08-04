@@ -38,11 +38,10 @@ const getOneCharacter = async (idCharacter) => {
       hash: hash,
 
     },
-    timeout: 10000
+    
   });
 
-  const characterData = response.data.data.results;
-
+  const characterData = response.data.data.results[0];
   localStorage.setItem(`character_${idCharacter}`, JSON.stringify(characterData));
 
   return characterData;
@@ -50,6 +49,12 @@ const getOneCharacter = async (idCharacter) => {
 }
 
 const getComicsCharacter = async (idCharacter) => {
+
+  const cachedComics = localStorage.getItem(`character_comics_${idCharacter}`);
+
+  if (cachedComics) {
+    return JSON.parse(cachedComics);
+  }
 
   const response = await axios.get(`${baseUrl}/characters/${idCharacter}/comics`, {
     params: {
@@ -62,7 +67,9 @@ const getComicsCharacter = async (idCharacter) => {
     },
   })
 
-  return response.data.data.results;
+  const comicsData = response.data.data.results;
+  localStorage.setItem(`character_comics_${idCharacter}`, JSON.stringify(comicsData));
+  return comicsData;
 
 }
 
