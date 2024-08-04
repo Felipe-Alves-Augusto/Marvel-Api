@@ -1,8 +1,9 @@
-# React + Vite
+# Como rodar o projeto?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- dar um git clone do repositório em seu computador
+- entrar na pasta do projeto e dar um npm install
+- por fim dar um npm run dev para dar o start no projeto
 
-Currently, two official plugins are available:
+ou se preferir entrar no link do projeto: https://marvel-api-orpin.vercel.app/heroi/1017100
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+OBS: a api da marvel está demorando um pouco para carregar as informações no site, para solucionar este problema armazenei os dados os personages em cache no localStorage mas mesmo assim a primeira vez que entrar no site os dados vão demorar um pouco para carregar por conta da api
