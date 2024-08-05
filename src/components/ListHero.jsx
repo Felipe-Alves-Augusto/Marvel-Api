@@ -3,16 +3,12 @@ import CardHero from "./CardHero";
 import AppContext from "../context/AppContext";
 import Container from "../utils/Container";
 import Flex from "../utils/Flex";
-import { getComicsCharacter, getOneCharacter } from "../api/MarvelsApi";
-
-
 
 const ListHero = () => {
 
 
     const [favorites, setFavorites] = useState([]);
-
-    const { isFavoriteFilter, filteredCharacters, characters } = useContext(AppContext);
+    const { isFavoriteFilter, filteredCharacters } = useContext(AppContext);
 
     useEffect(() => {
         const storedFavorites = localStorage.getItem('charactersFavorites');
@@ -24,6 +20,8 @@ const ListHero = () => {
     }, [])
 
 
+
+
     useEffect(() => {
 
         if (favorites.length > 0) {
@@ -31,6 +29,7 @@ const ListHero = () => {
         }
 
     }, [favorites]);
+
 
 
     const toggleFavorite = (character) => {

@@ -14,6 +14,7 @@ const Provider = (props) => {
 
 
 
+
     // filtro do toggle
     const toggleFilter = () => {
         setIsFavoriteFilter(!isFavoriteFilter);
@@ -33,14 +34,15 @@ const Provider = (props) => {
                 try {
                     const charactersData = await getCharacters();
                     setCharacters(charactersData);
-              
+
+
                     localStorage.setItem('characters', JSON.stringify(charactersData));
                 } catch (error) {
                     console.error('Error fetching characters:', error);
                 }
             }
 
-           
+
 
 
 
@@ -49,6 +51,8 @@ const Provider = (props) => {
         getData();
 
     }, [])
+
+
 
 
     // filtro de busca pelo nome
@@ -63,30 +67,30 @@ const Provider = (props) => {
         );
     }, [searchTerm, characters]);
 
-        // armazenando os detalhes de cada persongem porque a api da marvel está com uma resposta demorada
-        useEffect(() => {
+    // armazenando os detalhes de cada persongem porque a api da marvel está com uma resposta demorada
+    useEffect(() => {
 
-            const setHeroDetail = async () => {
-                for (const hero of characters) {
-                    await getOneCharacter(hero.id);
-                    
-                }
+        const setHeroDetail = async () => {
+            for (const hero of characters) {
+                await getOneCharacter(hero.id);
+
             }
-    
-            setHeroDetail();
-        }, [])
-    
-        useEffect(() => {
-    
-            const storageComics = async () => {
-                for (const comics of characters) {
-                
-                   await getComicsCharacter(comics.id);
-                }
+        }
+
+        setHeroDetail();
+    }, [characters])
+
+    useEffect(() => {
+
+        const storageComics = async () => {
+            for (const comics of characters) {
+
+                await getComicsCharacter(comics.id);
             }
-    
-            storageComics();
-        }, [])
+        }
+
+        storageComics();
+    }, [characters])
 
 
 

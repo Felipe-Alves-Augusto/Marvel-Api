@@ -11,9 +11,10 @@ const hash = md5(`${timestamp}${privateKey}${publicKey}`);
 
 const getCharacters = async () => {
 
+  
+
   const response = await axios.get(`${baseUrl}/characters`, {
     params: {
-      orderBy: name,
       ts: timestamp,
       apikey: publicKey,
       hash: hash,

@@ -26,6 +26,7 @@ export default () => {
         if (getCharacterFavoriteStorage) {
             const favoriteParse = JSON.parse(getCharacterFavoriteStorage);
             
+            
             favoriteParse.some(fav => {
                 if(fav.id == idCharacter){
                     setIsCharacterFavorite(true);
@@ -38,8 +39,9 @@ export default () => {
 
         const getData = async () => {
             const characterData = localStorage.getItem(`character_${idCharacter}`);
+            console.log(characterData);
             if (characterData) {
-                setCharacter(JSON.parse(characterData)); // Armazena o objeto diretamente
+                setCharacter(JSON.parse(characterData));
               }
             
 
